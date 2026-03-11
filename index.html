@@ -183,6 +183,39 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
 @keyframes spin{to{transform:rotate(360deg)}}
 .er{background:#fdecea;border:1px solid #f5c6cb;border-radius:7px;padding:8px 12px;color:#c0392b;font-size:.8rem;margin-top:8px;display:none}
 .cdd{background:#fff;border-radius:10px;padding:13px 15px;margin-bottom:12px;border:1.5px solid #ccc;font-size:.84rem;line-height:2;color:#222}
+/* ── MEASURE TOOL ── */
+.msr-btn{background:none;border:1.5px solid #0891b2;color:#0891b2;border-radius:6px;padding:4px 9px;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:4px;margin-top:5px;transition:all .15s}
+.msr-btn:hover{background:#0891b2;color:#fff}
+#msr-modal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:12px}
+#msr-modal.open{display:flex}
+#msr-box{background:#fff;border-radius:14px;width:100%;max-width:680px;max-height:95vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.msr-head{background:#0a1628;padding:16px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.msr-head h3{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:1px;margin:0}
+.msr-head p{font-size:.78rem;opacity:.6;margin:2px 0 0}
+.msr-xb{background:rgba(255,255,255,.15);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.9rem}
+.msr-search{padding:14px 16px;border-bottom:1px solid #ddd;flex-shrink:0;background:#f9f9f9}
+.msr-search-row{display:flex;gap:8px}
+.msr-search input{flex:1;border:2px solid #ccc;border-radius:8px;padding:9px 12px;font-size:.88rem;font-family:inherit}
+.msr-search input:focus{outline:none;border-color:#0891b2}
+.msr-search-btn{background:#0891b2;color:#fff;border:none;border-radius:8px;padding:9px 16px;font-weight:700;font-size:.88rem;cursor:pointer;white-space:nowrap}
+.msr-search-btn:hover{background:#0e7490}
+.msr-hint{font-size:.72rem;color:#888;margin-top:7px;line-height:1.5}
+#msr-map-wrap{flex:1;min-height:340px;background:#e8e8e8}
+#msr-map{width:100%;height:100%;min-height:340px;}
+.msr-map-msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:#888;font-size:.9rem;text-align:center;padding:20px;pointer-events:none}
+.msr-map-msg .mm-icon{font-size:2.5rem}
+.msr-footer{padding:14px 16px;border-top:1px solid #ddd;display:flex;align-items:center;gap:12px;flex-wrap:wrap;flex-shrink:0;background:#f9f9f9}
+.msr-result{flex:1;min-width:160px}
+.msr-result .mr-label{font-size:.7rem;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:.5px}
+.msr-result .mr-val{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:800;color:#0e4d7b;line-height:1.2}
+.msr-result .mr-sub{font-size:.72rem;color:#999;margin-top:1px}
+.msr-use-btn{background:#0891b2;color:#fff;border:none;border-radius:9px;padding:11px 20px;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.5px;cursor:pointer;display:none}
+.msr-use-btn.show{display:block}
+.msr-use-btn:hover{background:#0e7490}
+.msr-clear-btn{background:#fff;border:2px solid #ccc;color:#555;border-radius:9px;padding:10px 14px;font-size:.82rem;font-weight:700;cursor:pointer;display:none}
+.msr-clear-btn.show{display:block}
+.msr-clear-btn:hover{border-color:#999}
+
 @media(max-width:900px){.services-grid{grid-template-columns:1fr 1fr}.why-grid,.area-content,.contact-grid{grid-template-columns:1fr}.why-img-stack{height:280px}.why-img-stack .img-main{width:85%;height:260px}.why-img-stack .img-accent{width:55%;height:160px}.ba-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.services-grid{grid-template-columns:1fr}.ba-pair{height:180px}.hero h1{font-size:3rem}.nav-links{display:none}.hamburger{display:flex}.hero-stats{gap:20px}.sg,.rw,.fr{grid-template-columns:1fr}.slg{grid-template-columns:repeat(2,1fr)}.ts,.mb{padding:14px}.pb{flex-direction:column;align-items:flex-start}.area-cities{grid-template-columns:1fr 1fr}footer{flex-direction:column;text-align:center}}
 </style>
@@ -337,19 +370,19 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
           <button class="sb" data-s="roof" onclick="tS(this)">🏚️ Roof Washing<span class="ck"></span></button>
           <button class="sb" data-s="fence" onclick="tS(this)">🔒 Fencing<span class="ck"></span></button>
         </div>
-        <div class="td" id="d-house"><h4>House Washing</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="h-sf" min="0" placeholder="2000" oninput="calc()"></div><div><label>Siding</label><select id="h-si" onchange="calc()"><option value="vinyl">Vinyl/Aluminum</option><option value="brick">Brick/Stone</option><option value="dryvit">Dryvit/Stucco</option><option value="cedar">Cedar Shakes</option></select></div></div></div>
-        <div class="td" id="d-drv"><h4>Driveway/Sidewalk</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="v-sf" min="0" placeholder="500" oninput="calc()"></div><div><label>Surface</label><select id="v-su" onchange="calc()"><option value="cement">Cement</option><option value="pavers">Pavers</option></select></div></div></div>
-        <div class="td" id="d-deck"><h4>Deck/Patio</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="k-sf" min="0" placeholder="300" oninput="calc()"></div><div><label>Type</label><select id="k-ty" onchange="calc()"><option value="composite">Composite/Fiberglass</option><option value="wood">Wood</option></select></div></div></div>
-        <div class="td" id="d-roof"><h4>Roof Washing</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="r-sf" min="0" placeholder="1500" oninput="calc()"></div><div><label>Type</label><select id="r-ty" onchange="calc()"><option value="shingle">Shingle/Metal</option><option value="terracotta">Terracotta/Clay</option><option value="woodshake">Wood Shake</option></select></div></div></div>
-        <div class="td" id="d-fence"><h4>Fencing</h4><div class="rw"><div><label>Linear Ft</label><input type="number" id="f-lf" min="0" placeholder="200" oninput="calc()"></div><div><label>Material</label><select id="f-ma" onchange="calc()"><option value="vinyl">Vinyl</option><option value="wood">Wood</option><option value="iron">Wrought Iron</option></select></div></div><div style="margin-top:6px"><label>Sides</label><select id="f-si" onchange="calc()" style="max-width:180px"><option value="1">1 Side</option><option value="2">Both Sides</option></select></div></div>
+        <div class="td" id="d-house"><h4>House Washing</h4><div class="rw"><div><label>Sq Ft (Footprint)</label><input type="number" id="h-sf" min="0" placeholder="2000" oninput="calc()"><button class="msr-btn" onclick="openMsr('h-sf','sq ft','House / Building Footprint')">&#128208; Measure</button></div><div><label>Siding</label><select id="h-si" onchange="calc()"><option value="vinyl">Vinyl/Aluminum</option><option value="brick">Brick/Stone</option><option value="dryvit">Dryvit/Stucco</option><option value="cedar">Cedar Shakes</option></select></div><div><label>Stories</label><select id="h-st" onchange="calc()"><option value="1.2">1 Story</option><option value="1.9">2 Stories</option><option value="2.7">3 Stories</option></select></div></div></div>
+        <div class="td" id="d-drv"><h4>Driveway/Sidewalk</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="v-sf" min="0" placeholder="500" oninput="calc()"><button class="msr-btn" onclick="openMsr('v-sf','sq ft','Driveway / Sidewalk')">&#128208; Measure</button></div><div><label>Surface</label><select id="v-su" onchange="calc()"><option value="cement">Cement</option><option value="pavers">Pavers</option></select></div></div></div>
+        <div class="td" id="d-deck"><h4>Deck/Patio</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="k-sf" min="0" placeholder="300" oninput="calc()"><button class="msr-btn" onclick="openMsr('k-sf','sq ft','Deck / Patio')">&#128208; Measure</button></div><div><label>Type</label><select id="k-ty" onchange="calc()"><option value="composite">Composite/Fiberglass</option><option value="wood">Wood</option></select></div></div></div>
+        <div class="td" id="d-roof"><h4>Roof Washing</h4><div class="rw"><div><label>Sq Ft (Footprint)</label><input type="number" id="r-sf" min="0" placeholder="1500" oninput="calc()"><button class="msr-btn" onclick="openMsr('r-sf','sq ft','Roof Area')">&#128208; Measure</button></div><div><label>Type</label><select id="r-ty" onchange="calc()"><option value="shingle">Shingle/Metal</option><option value="terracotta">Terracotta/Clay</option><option value="woodshake">Wood Shake</option></select></div><div><label>Pitch</label><select id="r-pi" onchange="calc()"><option value="1.05">Flat/Low (1-3/12)</option><option value="1.2" selected>Moderate (4-6/12)</option><option value="1.4">Steep (7-9/12)</option><option value="1.7">Very Steep (10-12/12+)</option></select></div><div><label>Stories</label><select id="r-st" onchange="calc()"><option value="1.0">1 Story</option><option value="1.2">2 Stories</option><option value="1.4">3 Stories</option></select></div></div></div>
+        <div class="td" id="d-fence"><h4>Fencing</h4><div class="rw"><div><label>Linear Ft</label><input type="number" id="f-lf" min="0" placeholder="200" oninput="calc()"><button class="msr-btn" onclick="openMsr('f-lf','linear ft','Fence Line')">&#128208; Measure</button></div><div><label>Material</label><select id="f-ma" onchange="calc()"><option value="vinyl">Vinyl</option><option value="wood">Wood</option><option value="iron">Wrought Iron</option></select></div></div><div style="margin-top:6px"><label>Sides</label><select id="f-si" onchange="calc()" style="max-width:180px"><option value="1">1 Side</option><option value="2">Both Sides</option></select></div></div>
       </div>
       <div class="ts"><div class="tst">Add-On Services</div>
         <div class="ao" id="a-gut" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Gutter Cleaning</strong><div style="font-size:.76rem;color:#777">$0.55/linear ft</div></div></div>
-        <div class="ai" id="a-gut-i"><label>Linear Feet</label><input type="number" id="g-lf" min="0" placeholder="150" oninput="calc()" style="max-width:170px"></div>
+        <div class="ai" id="a-gut-i"><label>Linear Feet</label><input type="number" id="g-lf" min="0" placeholder="150" oninput="calc()" style="max-width:170px"><button class="msr-btn" onclick="openMsr('g-lf','linear ft','Gutter Line')">&#128208; Measure</button></div>
         <div class="ao" id="a-fur" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Outdoor Furniture</strong><div style="font-size:.76rem;color:#777">$10/piece</div></div></div>
         <div class="ai" id="a-fur-i"><label>Pieces</label><input type="number" id="fu-p" min="0" placeholder="4" oninput="calc()" style="max-width:170px"></div>
         <div class="ao" id="a-awn" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Awning Cleaning</strong><div style="font-size:.76rem;color:#777">$1.50/sq ft</div></div></div>
-        <div class="ai" id="a-awn-i"><label>Sq Footage</label><input type="number" id="aw-sf" min="0" placeholder="80" oninput="calc()" style="max-width:170px"></div>
+        <div class="ai" id="a-awn-i"><label>Sq Footage</label><input type="number" id="aw-sf" min="0" placeholder="80" oninput="calc()" style="max-width:170px"><button class="msr-btn" onclick="openMsr('aw-sf','sq ft','Awning Area')">&#128208; Measure</button></div>
       </div>
       <div class="pb"><div><div class="pl">Estimated Total</div><div class="pa" id="tw-pr">$0</div><div class="pn">Min $150 · Final price confirmed before service</div></div><button class="bb" id="tw-bb" onclick="openM()" disabled>📅 Schedule Service</button></div>
     </div>
@@ -393,7 +426,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
     <div class="contact-info">
       <p style="color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:8px">Use our online estimator to get an instant quote and book your appointment — or reach us directly.</p>
       <div class="contact-item"><div class="ci-icon">📞</div><div><div class="ci-label">Phone</div><div class="ci-val"><a href="tel:+16092154752">(609) 215-4752</a></div></div></div>
-      <div class="contact-item"><div class="ci-icon">📧</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:contact@tidal-wash.com">contact@tidal-wash.com</a></div></div></div>
+      <div class="contact-item"><div class="ci-icon">📧</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="/cdn-cgi/l/email-protection#0f6c60617b6e6c7b4f7b666b6e6322786e7c67216c6062"><span class="__cf_email__" data-cfemail="01626e6f7560627541756865606d2c766072692f626e6c">[email&#160;protected]</span></a></div></div></div>
       <div class="contact-item"><div class="ci-icon">📍</div><div><div class="ci-label">Service Area</div><div class="ci-val">Dover, DE to Media, PA</div></div></div>
       <div class="contact-item"><div class="ci-icon">🕐</div><div><div class="ci-label">Hours</div><div class="ci-val">Mon–Sat, 7am–5pm</div></div></div>
     </div>
@@ -424,35 +457,372 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
   </div>
 </div></div>
 
+<!-- MEASURE TOOL MODAL -->
+<div id="msr-modal">
+  <div id="msr-box">
+    <div class="msr-head">
+      <div><h3>&#128208; Measure Area</h3><p id="msr-sub">Search your address, then trace the area</p></div>
+      <button class="msr-xb" onclick="closeMsr()">&#10005;</button>
+    </div>
+    <div class="msr-search">
+      <div class="msr-search-row">
+        <input id="msr-addr" type="text" placeholder="Enter your property address..." onkeydown="if(event.key==='Enter')msrSearch()">
+        <button class="msr-search-btn" onclick="msrSearch()">&#128205; Find</button>
+      </div>
+      <div class="msr-hint" id="msr-hint-text">Enter your address to load the satellite view, then trace your area.</div>
+    </div>
+    <div id="msr-map-wrap" style="position:relative;flex:1;min-height:340px;">
+      <div id="msr-map" style="width:100%;height:100%;min-height:340px;"></div>
+      <canvas id="msr-canvas" style="position:absolute;top:0;left:0;pointer-events:none;"></canvas>
+      <div id="msr-map-msg" class="msr-map-msg">
+        <div class="mm-icon">&#128506;</div>
+        <div>Enter your address above to load the satellite view.</div>
+      </div>
+      <div id="msr-mode-bar" style="display:none;position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:20;gap:6px;align-items:center;">
+        <button id="msr-btn-draw" onclick="msrSetMode('draw')" style="background:#0891b2;color:#fff;border:2px solid #0891b2;border-radius:7px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;">&#9999; Draw</button>
+        <button id="msr-btn-pan" onclick="msrSetMode('pan')" style="background:#fff;color:#333;border:2px solid #ccc;border-radius:7px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;">&#128400; Pan</button>
+      </div>
+    </div>
+    <div class="msr-footer">
+      <div class="msr-result">
+        <div class="mr-label" id="msr-for-label">Measurement</div>
+        <div class="mr-val" id="msr-val">--</div>
+        <div class="mr-sub" id="msr-sub2">Trace the area on the map</div>
+      </div>
+      <button class="msr-clear-btn" id="msr-clear-btn" onclick="msrClear()">&#128465; Clear</button>
+      <button class="msr-use-btn" id="msr-add-seg-btn" onclick="msrAddSegment()" style="display:none;background:#0a6fa8;">+ Add Another</button>
+      <button class="msr-use-btn" id="msr-use-btn" onclick="msrUse()">&#10003; Use This Measurement</button>
+    </div>
+  </div>
+</div>
+
 <script>
+const MAPS_KEY='AIzaSyANGrxiO-W-QVd3AooAza7qx_x_YcHRMeM';
+let msrMap=null,msrCanvas=null,msrCtx=null;
+let msrTargetId=null,msrMode=null,msrResult=0;
+let msrMapsLoaded=false,msrMapsLoading=false;
+let msrPoints=[],msrSegments=[],msrDrawing=true,msrCurrentMode='draw';
+let msrMousePos=null,msrLastClickTime=0,msrLastClickPos=null;
+const SNAP_R=18;
+
+function loadMapsAPI(cb){
+  if(msrMapsLoaded){cb();return}
+  if(msrMapsLoading){const t=setInterval(()=>{if(msrMapsLoaded){clearInterval(t);cb()}},100);return}
+  msrMapsLoading=true;
+  window._msrMapCB=function(){msrMapsLoaded=true;cb()};
+  const s=document.createElement('script');
+  s.src='https://maps.googleapis.com/maps/api/js?key='+MAPS_KEY+'&libraries=places&callback=_msrMapCB';
+  s.async=true;document.head.appendChild(s);
+}
+
+function openMsr(targetId,mode,label){
+  msrTargetId=targetId;msrMode=mode;
+  document.getElementById('msr-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('msr-for-label').textContent=label+' ('+mode+')';
+  document.getElementById('msr-val').textContent='--';
+  document.getElementById('msr-sub2').textContent=mode==='linear ft'?'Click points along the fence line':'Click each corner of the area';
+  document.getElementById('msr-use-btn').classList.remove('show');
+  document.getElementById('msr-clear-btn').classList.remove('show');
+  document.getElementById('msr-add-seg-btn').style.display='none';
+  msrResult=0;msrPoints=[];msrSegments=[];msrDrawing=true;msrMousePos=null;
+  if(msrCtx) msrCtx.clearRect(0,0,msrCanvas.width,msrCanvas.height);
+  loadMapsAPI(()=>{
+    setTimeout(()=>{
+      const wrap=document.getElementById('msr-map-wrap');
+      if(!msrMap){
+        msrMap=new google.maps.Map(document.getElementById('msr-map'),{
+          center:{lat:39.7,lng:-75.5},zoom:19,mapTypeId:'satellite',
+          tilt:0,zoomControl:true,mapTypeControl:false,streetViewControl:false,fullscreenControl:false,
+          gestureHandling:'greedy',disableDoubleClickZoom:true
+        });
+        msrCanvas=document.getElementById('msr-canvas');
+        msrCtx=msrCanvas.getContext('2d');
+        new ResizeObserver(()=>msrResizeCanvas()).observe(wrap);
+        msrResizeCanvas();
+        msrCanvas.addEventListener('mousedown',msrOnDown);
+        msrCanvas.addEventListener('mousemove',msrOnMove);
+        msrCanvas.addEventListener('touchstart',msrOnTouchStart,{passive:false});
+        msrCanvas.addEventListener('touchmove',msrOnTouchMove,{passive:false});
+        msrCanvas.addEventListener('touchend',msrOnTouchEnd,{passive:false});
+        msrMap.addListener('idle',()=>msrRedraw());
+        msrMap.addListener('bounds_changed',()=>msrRedraw());
+      }
+      document.getElementById('msr-map-msg').style.display='none';
+      document.getElementById('msr-mode-bar').style.display='flex';
+      msrSetMode('pan');
+      const ba=document.getElementById('b-a');
+      if(ba&&ba.value.trim()&&!document.getElementById('msr-addr').value)
+        document.getElementById('msr-addr').value=ba.value.trim();
+    },200);
+  });
+}
+
+function closeMsr(){
+  document.getElementById('msr-modal').classList.remove('open');
+  document.body.style.overflow='';
+  if(msrMap) msrMap.setOptions({draggable:true,gestureHandling:'greedy'});
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('msr-modal').addEventListener('click',e=>{
+    if(e.target===document.getElementById('msr-modal')) closeMsr();
+  });
+});
+
+function msrSearch(){
+  const addr=document.getElementById('msr-addr').value.trim();
+  if(!addr||!msrMapsLoaded) return;
+  new google.maps.Geocoder().geocode({address:addr},function(res,status){
+    if(status==='OK'&&res[0]){
+      msrMap.setCenter(res[0].geometry.location);
+      msrMap.setZoom(20);
+      msrMap.setMapTypeId('satellite');
+      document.getElementById('msr-map-msg').style.display='none';
+      msrClear();
+      msrSetMode('draw');
+    } else {
+      alert('Address not found. Try: 123 Main St, Wilmington, DE');
+    }
+  });
+}
+
+function msrResizeCanvas(){
+  const wrap=document.getElementById('msr-map-wrap');
+  if(!msrCanvas||!wrap) return;
+  msrCanvas.width=wrap.offsetWidth;
+  msrCanvas.height=wrap.offsetHeight;
+  msrRedraw();
+}
+
+function msrSetMode(mode){
+  msrCurrentMode=mode;
+  const db=document.getElementById('msr-btn-draw');
+  const pb=document.getElementById('msr-btn-pan');
+  if(mode==='draw'){
+    msrCanvas.style.pointerEvents='all';
+    msrCanvas.style.cursor='crosshair';
+    msrMap.setOptions({draggable:false,scrollwheel:false,gestureHandling:'none'});
+    db.style.cssText='background:#0891b2;color:#fff;border:2px solid #0891b2;border-radius:7px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;';
+    pb.style.cssText='background:#fff;color:#333;border:2px solid #ccc;border-radius:7px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;';
+    document.getElementById('msr-hint-text').textContent=
+      msrMode==='linear ft'
+        ? 'DRAW — Click points along your fence line. Hit + Add Another or Use when done.'
+        : 'DRAW — Click each corner. Click the first green dot to close the shape. Use + Add Another for a shed.';
+  } else {
+    msrCanvas.style.pointerEvents='none';
+    msrCanvas.style.cursor='default';
+    msrMap.setOptions({draggable:true,scrollwheel:true,gestureHandling:'greedy'});
+    pb.style.cssText='background:#0891b2;color:#fff;border:2px solid #0891b2;border-radius:7px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;';
+    db.style.cssText='background:#fff;color:#333;border:2px solid #ccc;border-radius:7px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;';
+    document.getElementById('msr-hint-text').textContent='PAN — Scroll to zoom, drag to move. Switch to Draw when ready.';
+  }
+}
+
+function msrCanvasToLatLng(x,y){
+  const wrap=document.getElementById('msr-map-wrap');
+  const b=msrMap.getBounds(),ne=b.getNorthEast(),sw=b.getSouthWest();
+  return{lat:ne.lat()-(ne.lat()-sw.lat())*(y/wrap.offsetHeight),
+         lng:sw.lng()+(ne.lng()-sw.lng())*(x/wrap.offsetWidth)};
+}
+function msrLatLngToCanvas(lat,lng){
+  const wrap=document.getElementById('msr-map-wrap');
+  const b=msrMap.getBounds(),ne=b.getNorthEast(),sw=b.getSouthWest();
+  return{x:(lng-sw.lng())/(ne.lng()-sw.lng())*wrap.offsetWidth,
+         y:(ne.lat()-lat)/(ne.lat()-sw.lat())*wrap.offsetHeight};
+}
+function msrGetCanvasPos(e){const r=msrCanvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
+function msrNearFirst(pos){
+  if(msrPoints.length<2) return false;
+  const f=msrLatLngToCanvas(msrPoints[0].lat,msrPoints[0].lng);
+  return Math.hypot(pos.x-f.x,pos.y-f.y)<SNAP_R;
+}
+
+function msrAddPoint(canvasPos){
+  const isFence=msrMode==='linear ft';
+  // Area: snap-close if near first point
+  if(!isFence&&msrPoints.length>=4&&msrNearFirst(canvasPos)){msrFinish();return;}
+  const ll=msrCanvasToLatLng(canvasPos.x,canvasPos.y);
+  msrPoints.push(ll);
+  msrRedraw();
+  if(isFence){
+    const total=[...msrSegments,msrPoints].reduce((s,seg)=>s+msrLineFt(seg),0);
+    if(total>0){
+      msrResult=Math.round(total);
+      document.getElementById('msr-val').textContent=msrResult.toLocaleString()+' linear ft';
+      document.getElementById('msr-use-btn').classList.add('show');
+      document.getElementById('msr-clear-btn').classList.add('show');
+    }
+    document.getElementById('msr-sub2').textContent=
+      msrPoints.length===1?'Click next point along the fence line':
+      msrPoints.length+' points -- keep clicking, or hit + Add Another / Use when done';
+    if(msrPoints.length>=2) document.getElementById('msr-add-seg-btn').style.display='block';
+  } else {
+    document.getElementById('msr-sub2').textContent=
+      msrPoints.length===1?'Click each corner of the area':
+      msrPoints.length===2?'Keep clicking corners':
+      'Click the first dot (turns green) to close the shape';
+    if(msrPoints.length>=1) document.getElementById('msr-clear-btn').classList.add('show');
+  }
+}
+
+function msrOnDown(e){if(msrCurrentMode!=='draw')return;e.preventDefault();msrAddPoint(msrGetCanvasPos(e));}
+function msrOnMove(e){if(msrCurrentMode!=='draw')return;msrMousePos=msrGetCanvasPos(e);msrRedraw();}
+function msrOnTouchStart(e){if(msrCurrentMode!=='draw')return;e.preventDefault();msrAddPoint(msrGetCanvasPos(e.touches[0]));}
+function msrOnTouchMove(e){if(msrCurrentMode!=='draw')return;e.preventDefault();msrMousePos=msrGetCanvasPos(e.touches[0]);msrRedraw();}
+function msrOnTouchEnd(e){if(msrCurrentMode!=='draw')return;e.preventDefault();}
+
+function msrDrawSeg(pts,color,filled){
+  if(pts.length<1)return;
+  const px=pts.map(p=>msrLatLngToCanvas(p.lat,p.lng));
+  msrCtx.beginPath();
+  msrCtx.moveTo(px[0].x,px[0].y);
+  for(let i=1;i<px.length;i++) msrCtx.lineTo(px[i].x,px[i].y);
+  const isFence=msrMode==='linear ft';
+  if(filled&&!isFence&&pts.length>=3){msrCtx.closePath();msrCtx.fillStyle='rgba(8,145,178,0.18)';msrCtx.fill();}
+  msrCtx.strokeStyle=color;msrCtx.lineWidth=2.5;
+  if(isFence) msrCtx.setLineDash([10,4]);
+  msrCtx.stroke();msrCtx.setLineDash([]);
+  px.forEach(p=>{
+    msrCtx.beginPath();msrCtx.arc(p.x,p.y,5,0,Math.PI*2);
+    msrCtx.fillStyle=color;msrCtx.fill();
+    msrCtx.strokeStyle='#fff';msrCtx.lineWidth=2;msrCtx.stroke();
+  });
+}
+
+function msrRedraw(){
+  if(!msrCtx||!msrMap||!msrMap.getBounds())return;
+  msrCtx.clearRect(0,0,msrCanvas.width,msrCanvas.height);
+  msrSegments.forEach(seg=>msrDrawSeg(seg,'#0a6fa8',true));
+  if(msrPoints.length>0) msrDrawSeg(msrPoints,'#0891b2',msrDrawing===false);
+  // Preview line to cursor
+  if(msrMousePos&&msrPoints.length>0&&msrDrawing){
+    const last=msrLatLngToCanvas(msrPoints[msrPoints.length-1].lat,msrPoints[msrPoints.length-1].lng);
+    msrCtx.beginPath();msrCtx.moveTo(last.x,last.y);msrCtx.lineTo(msrMousePos.x,msrMousePos.y);
+    msrCtx.setLineDash([5,5]);msrCtx.strokeStyle='rgba(8,145,178,0.5)';msrCtx.lineWidth=1.5;
+    msrCtx.stroke();msrCtx.setLineDash([]);
+  }
+  // Snap indicator on first point
+  if(msrMode!=='linear ft'&&msrPoints.length>=4&&msrMousePos){
+    const f=msrLatLngToCanvas(msrPoints[0].lat,msrPoints[0].lng);
+    const snap=msrNearFirst(msrMousePos);
+    msrCtx.beginPath();msrCtx.arc(f.x,f.y,snap?10:6,0,Math.PI*2);
+    msrCtx.fillStyle=snap?'#22c55e':'#0891b2';msrCtx.fill();
+    msrCtx.strokeStyle='#fff';msrCtx.lineWidth=2;msrCtx.stroke();
+    if(snap){msrCtx.beginPath();msrCtx.arc(f.x,f.y,16,0,Math.PI*2);msrCtx.strokeStyle='rgba(34,197,94,0.5)';msrCtx.lineWidth=2.5;msrCtx.stroke();}
+  }
+}
+
+function msrFinish(){
+  msrDrawing=false;msrMousePos=null;msrRedraw();
+  const allSegs=[...msrSegments,msrPoints];
+  let result;
+  if(msrMode==='linear ft'){
+    result=Math.round(allSegs.reduce((s,seg)=>s+msrLineFt(seg),0));
+  } else {
+    result=Math.round(allSegs.reduce((s,seg)=>s+msrAreaSqFt(seg),0));
+  }
+  msrResult=result;
+  const isFence=msrMode==='linear ft';
+  document.getElementById('msr-val').textContent=result.toLocaleString()+(isFence?' linear ft':' sq ft');
+  document.getElementById('msr-sub2').textContent=(isFence?'Total fence length':(msrSegments.length>0?'Combined area':'Area of shape'))+' -- adjust if needed';
+  document.getElementById('msr-use-btn').classList.add('show');
+  document.getElementById('msr-clear-btn').classList.add('show');
+  document.getElementById('msr-add-seg-btn').style.display='block';
+  document.getElementById('msr-add-seg-btn').textContent=isFence?'+ Add Segment':'+ Add Another Shape';
+  msrSetMode('pan');
+}
+
+function msrAddSegment(){
+  const min=msrMode==='linear ft'?2:3;
+  if(msrPoints.length<min)return;
+  msrSegments.push([...msrPoints]);
+  msrPoints=[];msrDrawing=true;msrMousePos=null;
+  msrRedraw();
+  const allSegs=msrSegments;
+  let total;
+  if(msrMode==='linear ft'){
+    total=allSegs.reduce((s,seg)=>s+msrLineFt(seg),0);
+    msrResult=Math.round(total);
+    document.getElementById('msr-val').textContent=msrResult.toLocaleString()+' linear ft';
+    document.getElementById('msr-sub2').textContent='Segment '+allSegs.length+' added -- draw next or Use';
+  } else {
+    total=allSegs.reduce((s,seg)=>s+msrAreaSqFt(seg),0);
+    msrResult=Math.round(total);
+    document.getElementById('msr-val').textContent=msrResult.toLocaleString()+' sq ft';
+    document.getElementById('msr-sub2').textContent='Shape '+allSegs.length+' added -- draw another or Use';
+  }
+  document.getElementById('msr-add-seg-btn').style.display='none';
+  document.getElementById('msr-use-btn').classList.add('show');
+  document.getElementById('msr-clear-btn').classList.add('show');
+  msrSetMode('draw');
+}
+
+function msrClear(){
+  msrPoints=[];msrSegments=[];msrDrawing=true;msrMousePos=null;msrResult=0;
+  if(msrCtx) msrCtx.clearRect(0,0,msrCanvas.width,msrCanvas.height);
+  document.getElementById('msr-val').textContent='--';
+  document.getElementById('msr-sub2').textContent=msrMode==='linear ft'?'Click points along the fence line':'Click each corner of the area';
+  document.getElementById('msr-use-btn').classList.remove('show');
+  document.getElementById('msr-clear-btn').classList.remove('show');
+  document.getElementById('msr-add-seg-btn').style.display='none';
+  msrSetMode('draw');
+}
+
+function msrUse(){
+  if(!msrResult||!msrTargetId)return;
+  const inp=document.getElementById(msrTargetId);
+  if(inp){inp.value=msrResult;inp.dispatchEvent(new Event('input'));}
+  calc();closeMsr();
+}
+
+function msrAreaSqFt(pts){
+  const R=6371000;let area=0;const n=pts.length;
+  for(let i=0;i<n;i++){const j=(i+1)%n;
+    const xi=pts[i].lng*Math.PI/180,yi=pts[i].lat*Math.PI/180;
+    const xj=pts[j].lng*Math.PI/180,yj=pts[j].lat*Math.PI/180;
+    area+=(xj-xi)*(2+Math.sin(yi)+Math.sin(yj));}
+  return Math.abs(area)*R*R/2*10.7639;
+}
+function msrLineFt(pts){
+  const R=6371000;let d=0;
+  for(let i=0;i<pts.length-1;i++){
+    const lat1=pts[i].lat*Math.PI/180,lon1=pts[i].lng*Math.PI/180;
+    const lat2=pts[i+1].lat*Math.PI/180,lon2=pts[i+1].lng*Math.PI/180;
+    const a=Math.sin((lat2-lat1)/2)**2+Math.cos(lat1)*Math.cos(lat2)*Math.sin((lon2-lon1)/2)**2;
+    d+=R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));}
+  return d*3.28084;
+}
+</script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function toggleMenu(){const m=document.getElementById('mob-menu');m.classList.toggle('open')}
 document.querySelectorAll('#mob-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mob-menu').classList.remove('open')));
 const ASURL="https://script.google.com/macros/s/AKfycbwYwTUFOi_qrlb5ZxP4nPfdRR_bjoZeu2Pp9pq79QU-hlHuPLAxrAHcWNWtAllKsOjr/exec";
-const PR={house:{vinyl:.12,brick:.15,dryvit:.18,cedar:.22},drv:{cement:.18,pavers:.25},deck:{composite:.20,wood:.28},roof:{shingle:.14,terracotta:.20,woodshake:.22},fence:{vinyl:.8,wood:.9,iron:1.1}};
+const PR={house:{vinyl:.12,brick:.15,dryvit:.18,cedar:.22},drv:{cement:.25,pavers:.35},deck:{composite:.45,wood:.55},roof:{shingle:.35,terracotta:.50,woodshake:.55},fence:{vinyl:1.25,wood:1.5,iron:2.0}};
 let svcs=new Set(),est=0,cY,cM,sDate=null,sSlot=null,busy=false;
 const g=id=>document.getElementById(id),fv=id=>parseFloat(g(id).value)||0,sv=id=>g(id)?g(id).value:'';
 function tS(b){const s=b.dataset.s,d=g('d-'+s);b.classList.toggle('on');d.classList.toggle('v');svcs.has(s)?svcs.delete(s):svcs.add(s);calc()}
 function tA(el){const id=el.id,i=g(id+'-i');el.classList.toggle('on');i.style.display=el.classList.contains('on')?'block':'none';calc()}
 function calc(){let t=0;
-  if(svcs.has('house'))t+=fv('h-sf')*(PR.house[sv('h-si')]||.12);
+  if(svcs.has('house'))t+=fv('h-sf')*(parseFloat(sv('h-st'))||1.2)*(PR.house[sv('h-si')]||.12);
   if(svcs.has('drv'))t+=fv('v-sf')*(PR.drv[sv('v-su')]||.18);
   if(svcs.has('deck'))t+=fv('k-sf')*(PR.deck[sv('k-ty')]||.20);
-  if(svcs.has('roof'))t+=fv('r-sf')*(PR.roof[sv('r-ty')]||.14);
+  if(svcs.has('roof'))t+=fv('r-sf')*(parseFloat(sv('r-pi'))||1.2)*(parseFloat(sv('r-st'))||1.0)*(PR.roof[sv('r-ty')]||.35);
   if(svcs.has('fence'))t+=fv('f-lf')*(PR.fence[sv('f-ma')]||.8)*(parseInt(sv('f-si'))||1);
   if(g('a-gut').classList.contains('on'))t+=fv('g-lf')*.55;
   if(g('a-fur').classList.contains('on'))t+=fv('fu-p')*10;
   if(g('a-awn').classList.contains('on'))t+=fv('aw-sf')*1.5;
   t=Math.max(t,svcs.size>0?150:0);est=Math.round(t);
   g('tw-pr').textContent='$'+est.toLocaleString();g('tw-bb').disabled=est===0||svcs.size===0}
-function bS(){const l=[];
-  if(svcs.has('house'))l.push('House Washing — '+fv('h-sf')+' sq ft ('+sv('h-si')+')');
-  if(svcs.has('drv'))l.push('Driveway — '+fv('v-sf')+' sq ft ('+sv('v-su')+')');
-  if(svcs.has('deck'))l.push('Deck/Patio — '+fv('k-sf')+' sq ft ('+sv('k-ty')+')');
-  if(svcs.has('roof'))l.push('Roof — '+fv('r-sf')+' sq ft ('+sv('r-ty')+')');
-  if(svcs.has('fence'))l.push('Fencing — '+fv('f-lf')+' ft ('+sv('f-ma')+', '+sv('f-si')+' side)');
-  if(g('a-gut').classList.contains('on'))l.push('Gutters — '+fv('g-lf')+' ft');
-  if(g('a-fur').classList.contains('on'))l.push('Furniture — '+fv('fu-p')+' pcs');
-  if(g('a-awn').classList.contains('on'))l.push('Awnings — '+fv('aw-sf')+' sq ft');
+function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();
+  if(svcs.has('house')){const p=fv('h-sf')*(parseFloat(sv('h-st'))||1.2)*(PR.house[sv('h-si')]||.12);l.push('House Washing — '+fmt(p));}
+  if(svcs.has('drv')){const p=fv('v-sf')*(PR.drv[sv('v-su')]||.25);l.push('Driveway/Sidewalk — '+fmt(p));}
+  if(svcs.has('deck')){const p=fv('k-sf')*(PR.deck[sv('k-ty')]||.45);l.push('Deck/Patio — '+fmt(p));}
+  if(svcs.has('roof')){const p=fv('r-sf')*(parseFloat(sv('r-pi'))||1.2)*(parseFloat(sv('r-st'))||1.0)*(PR.roof[sv('r-ty')]||.35);l.push('Roof Washing — '+fmt(p));}
+  if(svcs.has('fence')){const p=fv('f-lf')*(PR.fence[sv('f-ma')]||1.25)*(parseInt(sv('f-si'))||1);l.push('Fencing — '+fmt(p));}
+  if(g('a-gut').classList.contains('on')){const p=fv('g-lf')*.55;l.push('Gutter Cleaning — '+fmt(p));}
+  if(g('a-fur').classList.contains('on')){const p=fv('fu-p')*10;l.push('Outdoor Furniture — '+fmt(p));}
+  if(g('a-awn').classList.contains('on')){const p=fv('aw-sf')*1.5;l.push('Awning Cleaning — '+fmt(p));}
   return l.join('\n')}
 function openM(){g('mo').classList.add('open');document.body.style.overflow='hidden';g('m-sv').textContent=bS();g('m-tot').textContent='$'+est.toLocaleString()+' estimated';const n=new Date();cY=n.getFullYear();cM=n.getMonth();rCal();gSt(1)}
 function closeM(){g('mo').classList.remove('open');document.body.style.overflow=''}
@@ -468,7 +838,7 @@ async function pDate(dt){if(busy)return;sDate=dt;sSlot=null;g('n1').disabled=tru
 async function subB(){const n=g('b-n').value.trim(),e=g('b-e').value.trim(),p=g('b-p').value.trim();if(!n||!e||!p){showE('e3','Please fill in name, phone, and email.');return}const btn=g('c-bt');btn.disabled=true;btn.innerHTML='<span class="sp"></span>Booking…';
   try{const r=await fetch(ASURL,{method:'POST',body:JSON.stringify({action:'bookAppointment',customerName:n,customerEmail:e,customerPhone:p,appointmentTime:sSlot,services:bS(),estimate:est,notes:(g('b-a').value+' '+g('b-no').value).trim()})});const data=await r.json();
   if(data.success){[1,2,3].forEach(i=>g('s'+i).style.display='none');g('suc').style.display='block';g('s-mg').textContent='Your appointment on '+new Date(sSlot).toLocaleString('en-US',{weekday:'long',month:'long',day:'numeric',hour:'numeric',minute:'2-digit'})+' is confirmed! Check '+e+' for your confirmation.'}else{showE('e3',data.error||'Booking failed. Please call (609) 215-4752.');btn.disabled=false;btn.innerHTML='🗓 Confirm Booking'}}catch{showE('e3','Network error. Please call (609) 215-4752.');btn.disabled=false;btn.innerHTML='🗓 Confirm Booking'}}
-function showE(id,msg){const e=g(id);e.textContent=msg;e.style.display='block';setTimeout(()=>e.style.display='none',6000)}
+function showE(id,msg){const el=g(id);if(el){el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',5000)}}
 </script>
 </body>
 </html>
