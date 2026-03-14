@@ -812,8 +812,8 @@ function calc(){let t=0;
   if(g('a-gut').classList.contains('on'))t+=fv('g-lf')*.55;
   if(g('a-fur').classList.contains('on'))t+=fv('fu-p')*10;
   if(g('a-awn').classList.contains('on'))t+=fv('aw-sf')*1.5;
-  t=Math.max(t,svcs.size>0?150:0);est=Math.round(t);
-  g('tw-pr').textContent='$'+est.toLocaleString();g('tw-bb').disabled=est===0||svcs.size===0}
+  const hasAddon=g('a-gut').classList.contains('on')||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on');const hasAny=svcs.size>0||hasAddon;t=Math.max(t,hasAny?150:0);est=Math.round(t);
+  g('tw-pr').textContent='$'+est.toLocaleString();g('tw-bb').disabled=est===0||!hasAny}
 function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();
   if(svcs.has('house')){const p=fv('h-sf')*(parseFloat(sv('h-st'))||1.2)*(PR.house[sv('h-si')]||.12);l.push('House Washing — '+fmt(p));}
   if(svcs.has('drv')){const p=fv('v-sf')*(PR.drv[sv('v-su')]||.25);l.push('Driveway/Sidewalk — '+fmt(p));}
