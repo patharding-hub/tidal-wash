@@ -120,7 +120,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
 .sb.on{border-color:#0891b2;background:#e0f7fa;color:#0e4d7b}
 .ck{margin-left:auto;width:15px;height:15px;border-radius:50%;border:2px solid #bbb;flex-shrink:0}
 .sb.on .ck{background:#0891b2;border-color:#0891b2}
-.td{display:none;margin-top:12px}.td.v{display:block}
+.td{display:none;margin-top:12px;grid-column:1/-1}.td.v{display:block}
 .td h4{font-size:.82rem;font-weight:700;color:#0e4d7b;margin:0 0 8px;padding-top:10px;border-top:1px solid #ddd}
 .rw{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
 .ts label{display:block;font-size:.72rem;font-weight:700;color:#666;margin-bottom:3px;text-transform:uppercase}
@@ -365,16 +365,16 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
       <div class="ts"><div class="tst">Select Services</div>
         <div class="sg">
           <button class="sb" data-s="house" onclick="tS(this)">🏠 House Washing<span class="ck"></span></button>
+          <div class="td" id="d-house"><h4>House Washing</h4><div class="rw"><div><label>Sq Ft (Footprint)</label><input type="number" id="h-sf" min="0" placeholder="2000" oninput="calc()"><button class="msr-btn" onclick="openMsr('h-sf','sq ft','House / Building Footprint')">&#128208; Measure</button></div><div><label>Siding</label><select id="h-si" onchange="calc()"><option value="vinyl">Vinyl/Aluminum</option><option value="brick">Brick/Stone</option><option value="dryvit">Dryvit/Stucco</option><option value="cedar">Cedar Shakes</option></select></div><div><label>Stories</label><select id="h-st" onchange="calc()"><option value="1.2">1 Story</option><option value="1.9">2 Stories</option><option value="2.7">3 Stories</option></select></div></div></div>
           <button class="sb" data-s="drv" onclick="tS(this)">🛣️ Driveway/Sidewalk<span class="ck"></span></button>
+          <div class="td" id="d-drv"><h4>Driveway/Sidewalk</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="v-sf" min="0" placeholder="500" oninput="calc()"><button class="msr-btn" onclick="openMsr('v-sf','sq ft','Driveway / Sidewalk')">&#128208; Measure</button></div><div><label>Surface</label><select id="v-su" onchange="calc()"><option value="cement">Cement</option><option value="pavers">Pavers</option></select></div></div></div>
           <button class="sb" data-s="deck" onclick="tS(this)">🪵 Deck/Patio<span class="ck"></span></button>
+          <div class="td" id="d-deck"><h4>Deck/Patio</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="k-sf" min="0" placeholder="300" oninput="calc()"><button class="msr-btn" onclick="openMsr('k-sf','sq ft','Deck / Patio')">&#128208; Measure</button></div><div><label>Type</label><select id="k-ty" onchange="calc()"><option value="composite">Composite/Fiberglass</option><option value="wood">Wood</option></select></div></div></div>
           <button class="sb" data-s="roof" onclick="tS(this)">🏚️ Roof Washing<span class="ck"></span></button>
+          <div class="td" id="d-roof"><h4>Roof Washing</h4><div class="rw"><div><label>Sq Ft (Footprint)</label><input type="number" id="r-sf" min="0" placeholder="1500" oninput="calc()"><button class="msr-btn" onclick="openMsr('r-sf','sq ft','Roof Area')">&#128208; Measure</button></div><div><label>Type</label><select id="r-ty" onchange="calc()"><option value="shingle">Shingle/Metal</option><option value="terracotta">Terracotta/Clay</option><option value="woodshake">Wood Shake</option></select></div><div><label>Pitch</label><select id="r-pi" onchange="calc()"><option value="1.05">Flat/Low (1-3/12)</option><option value="1.2" selected>Moderate (4-6/12)</option><option value="1.4">Steep (7-9/12)</option><option value="1.7">Very Steep (10-12/12+)</option></select></div><div><label>Stories</label><select id="r-st" onchange="calc()"><option value="1.0">1 Story</option><option value="1.2">2 Stories</option><option value="1.4">3 Stories</option></select></div></div></div>
           <button class="sb" data-s="fence" onclick="tS(this)">🔒 Fencing<span class="ck"></span></button>
+          <div class="td" id="d-fence"><h4>Fencing</h4><div class="rw"><div><label>Linear Ft</label><input type="number" id="f-lf" min="0" placeholder="200" oninput="calc()"><button class="msr-btn" onclick="openMsr('f-lf','linear ft','Fence Line')">&#128208; Measure</button></div><div><label>Material</label><select id="f-ma" onchange="calc()"><option value="vinyl">Vinyl</option><option value="wood">Wood</option><option value="iron">Wrought Iron</option></select></div></div><div style="margin-top:6px"><label>Sides</label><select id="f-si" onchange="calc()" style="max-width:180px"><option value="1">1 Side</option><option value="2">Both Sides</option></select></div></div>
         </div>
-        <div class="td" id="d-house"><h4>House Washing</h4><div class="rw"><div><label>Sq Ft (Footprint)</label><input type="number" id="h-sf" min="0" placeholder="2000" oninput="calc()"><button class="msr-btn" onclick="openMsr('h-sf','sq ft','House / Building Footprint')">&#128208; Measure</button></div><div><label>Siding</label><select id="h-si" onchange="calc()"><option value="vinyl">Vinyl/Aluminum</option><option value="brick">Brick/Stone</option><option value="dryvit">Dryvit/Stucco</option><option value="cedar">Cedar Shakes</option></select></div><div><label>Stories</label><select id="h-st" onchange="calc()"><option value="1.2">1 Story</option><option value="1.9">2 Stories</option><option value="2.7">3 Stories</option></select></div></div></div>
-        <div class="td" id="d-drv"><h4>Driveway/Sidewalk</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="v-sf" min="0" placeholder="500" oninput="calc()"><button class="msr-btn" onclick="openMsr('v-sf','sq ft','Driveway / Sidewalk')">&#128208; Measure</button></div><div><label>Surface</label><select id="v-su" onchange="calc()"><option value="cement">Cement</option><option value="pavers">Pavers</option></select></div></div></div>
-        <div class="td" id="d-deck"><h4>Deck/Patio</h4><div class="rw"><div><label>Sq Ft</label><input type="number" id="k-sf" min="0" placeholder="300" oninput="calc()"><button class="msr-btn" onclick="openMsr('k-sf','sq ft','Deck / Patio')">&#128208; Measure</button></div><div><label>Type</label><select id="k-ty" onchange="calc()"><option value="composite">Composite/Fiberglass</option><option value="wood">Wood</option></select></div></div></div>
-        <div class="td" id="d-roof"><h4>Roof Washing</h4><div class="rw"><div><label>Sq Ft (Footprint)</label><input type="number" id="r-sf" min="0" placeholder="1500" oninput="calc()"><button class="msr-btn" onclick="openMsr('r-sf','sq ft','Roof Area')">&#128208; Measure</button></div><div><label>Type</label><select id="r-ty" onchange="calc()"><option value="shingle">Shingle/Metal</option><option value="terracotta">Terracotta/Clay</option><option value="woodshake">Wood Shake</option></select></div><div><label>Pitch</label><select id="r-pi" onchange="calc()"><option value="1.05">Flat/Low (1-3/12)</option><option value="1.2" selected>Moderate (4-6/12)</option><option value="1.4">Steep (7-9/12)</option><option value="1.7">Very Steep (10-12/12+)</option></select></div><div><label>Stories</label><select id="r-st" onchange="calc()"><option value="1.0">1 Story</option><option value="1.2">2 Stories</option><option value="1.4">3 Stories</option></select></div></div></div>
-        <div class="td" id="d-fence"><h4>Fencing</h4><div class="rw"><div><label>Linear Ft</label><input type="number" id="f-lf" min="0" placeholder="200" oninput="calc()"><button class="msr-btn" onclick="openMsr('f-lf','linear ft','Fence Line')">&#128208; Measure</button></div><div><label>Material</label><select id="f-ma" onchange="calc()"><option value="vinyl">Vinyl</option><option value="wood">Wood</option><option value="iron">Wrought Iron</option></select></div></div><div style="margin-top:6px"><label>Sides</label><select id="f-si" onchange="calc()" style="max-width:180px"><option value="1">1 Side</option><option value="2">Both Sides</option></select></div></div>
       </div>
       <div class="ts"><div class="tst">Add-On Services</div>
         <div class="ao" id="a-gut" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Gutter Cleaning</strong><div style="font-size:.76rem;color:#777">$0.55/linear ft</div></div></div>
@@ -655,6 +655,7 @@ function msrAddPoint(canvasPos){
     document.getElementById('msr-sub2').textContent=
       msrPoints.length===1?'Click next point along the fence line':
       msrPoints.length+' points -- keep clicking, or hit + Add Another / Use when done';
+    if(msrPoints.length>=1) document.getElementById('msr-clear-btn').classList.add('show');
     if(msrPoints.length>=2) document.getElementById('msr-add-seg-btn').style.display='block';
   } else {
     document.getElementById('msr-sub2').textContent=
@@ -814,15 +815,16 @@ function calc(){let t=0;
   if(g('a-awn').classList.contains('on'))t+=fv('aw-sf')*1.5;
   const hasAddon=g('a-gut').classList.contains('on')||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on');const hasAny=svcs.size>0||hasAddon;t=Math.max(t,hasAny?150:0);est=Math.round(t);
   g('tw-pr').textContent='$'+est.toLocaleString();g('tw-bb').disabled=est===0||!hasAny}
-function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();
-  if(svcs.has('house')){const p=fv('h-sf')*(parseFloat(sv('h-st'))||1.2)*(PR.house[sv('h-si')]||.12);l.push('House Washing — '+fmt(p));}
-  if(svcs.has('drv')){const p=fv('v-sf')*(PR.drv[sv('v-su')]||.25);l.push('Driveway/Sidewalk — '+fmt(p));}
-  if(svcs.has('deck')){const p=fv('k-sf')*(PR.deck[sv('k-ty')]||.45);l.push('Deck/Patio — '+fmt(p));}
-  if(svcs.has('roof')){const p=fv('r-sf')*(parseFloat(sv('r-pi'))||1.2)*(parseFloat(sv('r-st'))||1.0)*(PR.roof[sv('r-ty')]||.35);l.push('Roof Washing — '+fmt(p));}
-  if(svcs.has('fence')){const p=fv('f-lf')*(PR.fence[sv('f-ma')]||1.25)*(parseInt(sv('f-si'))||1);l.push('Fencing — '+fmt(p));}
-  if(g('a-gut').classList.contains('on')){const p=fv('g-lf')*.55;l.push('Gutter Cleaning — '+fmt(p));}
-  if(g('a-fur').classList.contains('on')){const p=fv('fu-p')*10;l.push('Outdoor Furniture — '+fmt(p));}
-  if(g('a-awn').classList.contains('on')){const p=fv('aw-sf')*1.5;l.push('Awning Cleaning — '+fmt(p));}
+function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();const isMin=est===150&&(svcs.size>0||g('a-gut').classList.contains('on')||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on'));
+  if(svcs.has('house')){const p=fv('h-sf')*(parseFloat(sv('h-st'))||1.2)*(PR.house[sv('h-si')]||.12);if(p>0)l.push('House Washing — '+fmt(p));}
+  if(svcs.has('drv')){const p=fv('v-sf')*(PR.drv[sv('v-su')]||.25);if(p>0)l.push('Driveway/Sidewalk — '+fmt(p));}
+  if(svcs.has('deck')){const p=fv('k-sf')*(PR.deck[sv('k-ty')]||.45);if(p>0)l.push('Deck/Patio — '+fmt(p));}
+  if(svcs.has('roof')){const p=fv('r-sf')*(parseFloat(sv('r-pi'))||1.2)*(parseFloat(sv('r-st'))||1.0)*(PR.roof[sv('r-ty')]||.35);if(p>0)l.push('Roof Washing — '+fmt(p));}
+  if(svcs.has('fence')){const p=fv('f-lf')*(PR.fence[sv('f-ma')]||1.25)*(parseInt(sv('f-si'))||1);if(p>0)l.push('Fencing — '+fmt(p));}
+  if(g('a-gut').classList.contains('on')){const p=fv('g-lf')*.55;if(p>0)l.push('Gutter Cleaning — '+fmt(p));}
+  if(g('a-fur').classList.contains('on')){const p=fv('fu-p')*10;if(p>0)l.push('Outdoor Furniture — '+fmt(p));}
+  if(g('a-awn').classList.contains('on')){const p=fv('aw-sf')*1.5;if(p>0)l.push('Awning Cleaning — '+fmt(p));}
+  if(isMin) l.push('— $150 minimum charge applies —');
   return l.join('\n')}
 function openM(){g('mo').classList.add('open');document.body.style.overflow='hidden';g('m-sv').textContent=bS();g('m-tot').textContent='$'+est.toLocaleString()+' estimated';const n=new Date();cY=n.getFullYear();cM=n.getMonth();rCal();gSt(1)}
 function closeM(){g('mo').classList.remove('open');document.body.style.overflow=''}
