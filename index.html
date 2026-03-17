@@ -188,7 +188,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
 .msr-btn:hover{background:#0891b2;color:#fff}
 #msr-modal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:12px}
 #msr-modal.open{display:flex}
-#msr-box{background:#fff;border-radius:14px;width:100%;max-width:680px;max-height:95vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#msr-box{background:#fff;border-radius:14px;width:100%;max-width:680px;max-height:95vh;overflow-y:auto;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .msr-head{background:#0a1628;padding:16px 20px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .msr-head h3{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:1px;margin:0}
 .msr-head p{font-size:.78rem;opacity:.6;margin:2px 0 0}
@@ -200,7 +200,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
 .msr-search-btn{background:#0891b2;color:#fff;border:none;border-radius:8px;padding:9px 16px;font-weight:700;font-size:.88rem;cursor:pointer;white-space:nowrap}
 .msr-search-btn:hover{background:#0e7490}
 .msr-hint{font-size:.72rem;color:#888;margin-top:7px;line-height:1.5}
-#msr-map-wrap{flex:1;min-height:340px;background:#e8e8e8}
+#msr-map-wrap{flex:1;min-height:260px;background:#e8e8e8}
 #msr-map{width:100%;height:100%;min-height:340px;}
 .msr-map-msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:#888;font-size:.9rem;text-align:center;padding:20px;pointer-events:none}
 .msr-map-msg .mm-icon{font-size:2.5rem}
@@ -217,7 +217,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
 .msr-clear-btn:hover{border-color:#999}
 
 @media(max-width:900px){.services-grid{grid-template-columns:1fr 1fr}.why-grid,.area-content,.contact-grid{grid-template-columns:1fr}.why-img-stack{height:280px}.why-img-stack .img-main{width:85%;height:260px}.why-img-stack .img-accent{width:55%;height:160px}.ba-grid{grid-template-columns:1fr}}
-@media(max-width:600px){.services-grid{grid-template-columns:1fr}.ba-pair{height:180px}.hero h1{font-size:3rem}.nav-links{display:none}.hamburger{display:flex}.hero-stats{gap:20px}.sg,.rw,.fr{grid-template-columns:1fr}.slg{grid-template-columns:repeat(2,1fr)}.ts,.mb{padding:14px}.pb{flex-direction:column;align-items:flex-start}.area-cities{grid-template-columns:1fr 1fr}footer{flex-direction:column;text-align:center}}
+@media(max-width:600px){#msr-map-wrap{min-height:200px!important}#msr-modal{padding:6px;align-items:flex-start;padding-top:10px}#msr-box{max-height:98vh}.services-grid{grid-template-columns:1fr}.ba-pair{height:180px}.hero h1{font-size:3rem}.nav-links{display:none}.hamburger{display:flex}.hero-stats{gap:20px}.sg,.rw,.fr{grid-template-columns:1fr}.slg{grid-template-columns:repeat(2,1fr)}.ts,.mb{padding:14px}.pb{flex-direction:column;align-items:flex-start}.area-cities{grid-template-columns:1fr 1fr}footer{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
@@ -472,7 +472,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
       </div>
       <div class="msr-hint" id="msr-hint-text">Enter your address to load the satellite view, then trace your area.</div>
     </div>
-    <div id="msr-map-wrap" style="position:relative;flex:1;min-height:340px;">
+    <div id="msr-map-wrap" style="position:relative;flex:1;min-height:260px;">
       <div id="msr-map" style="width:100%;height:100%;min-height:340px;"></div>
       <canvas id="msr-canvas" style="position:absolute;top:0;left:0;pointer-events:none;"></canvas>
       <div id="msr-map-msg" class="msr-map-msg">
