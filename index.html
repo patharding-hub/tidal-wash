@@ -25,7 +25,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(13,27,42,.9
 #mob-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(13,27,42,.98);padding:20px 5%;z-index:999;flex-direction:column;gap:0}
 #mob-menu.open{display:flex}
 #mob-menu a{color:rgba(255,255,255,.85);text-decoration:none;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
-.hero{min-height:100vh;background:linear-gradient(160deg,var(--ink) 0%,#0a2a45 50%,#0a4a6e 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 5% 40px}
+.hero{min-height:100vh;background:linear-gradient(160deg,var(--ink) 0%,#0a2a45 50%,#0a4a6e 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding:118px 5% 40px}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230a6fa8' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.4}
 .hero-content{position:relative;z-index:1;max-width:660px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(56,182,232,.15);border:1px solid rgba(56,182,232,.35);border-radius:20px;padding:6px 14px;margin-bottom:22px}
@@ -216,12 +216,16 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
 .msr-clear-btn.show{display:block}
 .msr-clear-btn:hover{border-color:#999}
 
+.promo-bar{background:linear-gradient(90deg,#e65c00,#f9a825);padding:9px 5%;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:.5px;position:fixed;top:64px;left:0;right:0;z-index:999}
+.promo-bar span{background:rgba(0,0,0,.18);border-radius:4px;padding:1px 8px;margin-left:8px;font-size:.9rem;letter-spacing:.5px}
+.promo-discount{background:#fff;color:#0e7a00;border-radius:6px;padding:2px 8px;font-size:.82rem;font-weight:700;display:inline-block;margin:4px 0 0;border:1.5px solid #b6e8b6}
 @media(max-width:900px){.services-grid{grid-template-columns:1fr 1fr}.why-grid,.area-content,.contact-grid{grid-template-columns:1fr}.why-img-stack{height:280px}.why-img-stack .img-main{width:85%;height:260px}.why-img-stack .img-accent{width:55%;height:160px}.ba-grid{grid-template-columns:1fr}}
 @media(max-width:600px){#msr-map-wrap{min-height:200px!important}#msr-modal{padding:6px;align-items:flex-start;padding-top:10px}#msr-box{max-height:98vh}.services-grid{grid-template-columns:1fr}.ba-pair{height:180px}.hero h1{font-size:3rem}.nav-links{display:none}.hamburger{display:flex}.hero-stats{gap:20px}.sg,.rw,.fr{grid-template-columns:1fr}.slg{grid-template-columns:repeat(2,1fr)}.ts,.mb{padding:14px}.pb{flex-direction:column;align-items:flex-start}.area-cities{grid-template-columns:1fr 1fr}footer{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
 
+<div class="promo-bar">🌿 APRIL SPECIAL — $100 Off Gutter Cleaning with any Full House Wash!<span>Book in April to save</span></div>
 <nav>
   <a href="#" class="nav-logo">TIDAL<span>WASH</span></a>
   <ul class="nav-links">
@@ -378,7 +382,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
         </div>
       </div>
       <div class="ts"><div class="tst">Add-On Services</div>
-        <div class="ao" id="a-gut" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Gutter Cleaning</strong><div style="font-size:.76rem;color:#777">$0.55/linear ft</div></div></div>
+        <div class="ao" id="a-gut" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Gutter Cleaning</strong><div style="font-size:.76rem;color:#777">$0.55/linear ft</div><div id="promo-applied" class="promo-discount" style="display:none">🎉 $100 April Booking Promo Applied!</div></div></div>
         <div class="ai" id="a-gut-i"><label>Linear Feet</label><input type="number" id="g-lf" min="0" placeholder="150" oninput="calc()" style="max-width:170px"><button class="msr-btn" onclick="openMsr('g-lf','linear ft','Gutter Line')">&#128208; Measure</button></div>
         <div class="ao" id="a-fur" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Outdoor Furniture</strong><div style="font-size:.76rem;color:#777">$10/piece</div></div></div>
         <div class="ai" id="a-fur-i"><label>Pieces</label><input type="number" id="fu-p" min="0" placeholder="4" oninput="calc()" style="max-width:170px"></div>
@@ -427,7 +431,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
     <div class="contact-info">
       <p style="color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:8px">Use our online estimator to get an instant quote and book your appointment — or reach us directly.</p>
       <div class="contact-item"><div class="ci-icon">📞</div><div><div class="ci-label">Phone</div><div class="ci-val"><a href="tel:+16092154752">(609) 215-4752</a></div></div></div>
-      <div class="contact-item"><div class="ci-icon">📧</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:contact@tidal-wash.com">contact@tidal-wash.com</a></div></div></div>
+      <div class="contact-item"><div class="ci-icon">📧</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="/cdn-cgi/l/email-protection#6a0905041e0b091e2a1e030e0b06471d0b190244090507"><span class="__cf_email__" data-cfemail="492a26273d282a3d093d202d2825643e283a21672a2624">[email&#160;protected]</span></a></div></div></div>
       <div class="contact-item"><div class="ci-icon">📍</div><div><div class="ci-label">Service Area</div><div class="ci-val">Dover, DE to Media, PA</div></div></div>
       <div class="contact-item"><div class="ci-icon">🕐</div><div><div class="ci-label">Hours</div><div class="ci-val">Mon–Sat, 7am–5pm</div></div></div>
     </div>
@@ -497,7 +501,8 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false">
 const MAPS_KEY='AIzaSyANGrxiO-W-QVd3AooAza7qx_x_YcHRMeM';
 let msrMap=null,msrCanvas=null,msrCtx=null;
 let msrTargetId=null,msrMode=null,msrResult=0;
@@ -796,11 +801,11 @@ function msrLineFt(pts){
 }
 </script>
 
-<script>
+<script data-cfasync="false">
 function toggleMenu(){const m=document.getElementById('mob-menu');m.classList.toggle('open')}
 document.querySelectorAll('#mob-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mob-menu').classList.remove('open')));
 const ASURL="https://script.google.com/macros/s/AKfycbwYwTUFOi_qrlb5ZxP4nPfdRR_bjoZeu2Pp9pq79QU-hlHuPLAxrAHcWNWtAllKsOjr/exec";
-const PR={house:{vinyl:.12,brick:.15,dryvit:.18,cedar:.22},drv:{cement:.25,pavers:.35},deck:{composite:.45,wood:.55},roof:{shingle:.35,terracotta:.50,woodshake:.55},fence:{vinyl:1.25,wood:1.5,iron:2.0}};
+const PR={house:{vinyl:.079,brick:.099,dryvit:.119,cedar:.145},drv:{cement:.25,pavers:.35},deck:{composite:.45,wood:.55},roof:{shingle:.35,terracotta:.50,woodshake:.55},fence:{vinyl:1.25,wood:1.5,iron:2.0}};
 let svcs=new Set(),est=0,cY,cM,sDate=null,sSlot=null,busy=false;
 const g=id=>document.getElementById(id),fv=id=>parseFloat(g(id).value)||0,sv=id=>g(id)?g(id).value:'';
 function tS(b){const s=b.dataset.s,d=g('d-'+s);b.classList.toggle('on');d.classList.toggle('v');svcs.has(s)?svcs.delete(s):svcs.add(s);calc()}
@@ -811,10 +816,16 @@ function calc(){let t=0;
   if(svcs.has('deck'))t+=fv('k-sf')*(PR.deck[sv('k-ty')]||.20);
   if(svcs.has('roof'))t+=fv('r-sf')*(parseFloat(sv('r-pi'))||1.2)*(parseFloat(sv('r-st'))||1.0)*(PR.roof[sv('r-ty')]||.35);
   if(svcs.has('fence'))t+=fv('f-lf')*(PR.fence[sv('f-ma')]||.8)*(parseInt(sv('f-si'))||1);
-  if(g('a-gut').classList.contains('on'))t+=fv('g-lf')*.55;
+  const gutOn=g('a-gut').classList.contains('on');
+  const gutAmt=gutOn?fv('g-lf')*.55:0;
+  if(gutOn)t+=gutAmt;
   if(g('a-fur').classList.contains('on'))t+=fv('fu-p')*10;
   if(g('a-awn').classList.contains('on'))t+=fv('aw-sf')*1.5;
-  const hasAddon=g('a-gut').classList.contains('on')||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on');const hasAny=svcs.size>0||hasAddon;t=Math.max(t,hasAny?150:0);est=Math.round(t);
+  const isApril=sDate?sDate.getMonth()===3:new Date().getMonth()===3;
+  const aprilPromo=isApril&&gutOn&&svcs.has('house');
+  if(aprilPromo)t=Math.max(0,t-Math.min(100,gutAmt));
+  const promoEl=g('promo-applied');if(promoEl)promoEl.style.display=aprilPromo?'block':'none';
+  const hasAddon=gutOn||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on');const hasAny=svcs.size>0||hasAddon;t=Math.max(t,hasAny?150:0);est=Math.round(t);
   g('tw-pr').textContent='$'+est.toLocaleString();g('tw-bb').disabled=est===0||!hasAny}
 function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();const isMin=est===150&&(svcs.size>0||g('a-gut').classList.contains('on')||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on'));
   if(svcs.has('house')){const p=fv('h-sf')*(parseFloat(sv('h-st'))||1.2)*(PR.house[sv('h-si')]||.12);if(p>0)l.push('House Washing — '+fmt(p));}
@@ -822,7 +833,7 @@ function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();const i
   if(svcs.has('deck')){const p=fv('k-sf')*(PR.deck[sv('k-ty')]||.45);if(p>0)l.push('Deck/Patio — '+fmt(p));}
   if(svcs.has('roof')){const p=fv('r-sf')*(parseFloat(sv('r-pi'))||1.2)*(parseFloat(sv('r-st'))||1.0)*(PR.roof[sv('r-ty')]||.35);if(p>0)l.push('Roof Washing — '+fmt(p));}
   if(svcs.has('fence')){const p=fv('f-lf')*(PR.fence[sv('f-ma')]||1.25)*(parseInt(sv('f-si'))||1);if(p>0)l.push('Fencing — '+fmt(p));}
-  if(g('a-gut').classList.contains('on')){const p=fv('g-lf')*.55;if(p>0)l.push('Gutter Cleaning — '+fmt(p));}
+  if(g('a-gut').classList.contains('on')){const gutP=fv('g-lf')*.55;const isAprilPromo=(sDate?sDate.getMonth()===3:new Date().getMonth()===3)&&svcs.has('house');const gutDisc=isAprilPromo?Math.min(100,gutP):0;const gutFinal=Math.max(0,gutP-gutDisc);if(gutP>0)l.push('Gutter Cleaning — '+(gutDisc>0?fmt(gutFinal)+' (was '+fmt(gutP)+', $'+Math.round(gutDisc)+' April promo!)':fmt(gutFinal)));}
   if(g('a-fur').classList.contains('on')){const p=fv('fu-p')*10;if(p>0)l.push('Outdoor Furniture — '+fmt(p));}
   if(g('a-awn').classList.contains('on')){const p=fv('aw-sf')*1.5;if(p>0)l.push('Awning Cleaning — '+fmt(p));}
   if(isMin) l.push('— $150 minimum charge applies —');
@@ -841,7 +852,7 @@ async function pDate(dt){if(busy)return;sDate=dt;sSlot=null;g('n1').disabled=tru
 async function subB(){const n=g('b-n').value.trim(),e=g('b-e').value.trim(),p=g('b-p').value.trim();if(!n||!e||!p){showE('e3','Please fill in name, phone, and email.');return}const btn=g('c-bt');btn.disabled=true;btn.innerHTML='<span class="sp"></span>Booking…';
   const rawHrs=est/200;const durHrs=Math.max(1,Math.ceil(rawHrs*2)/2);try{const r=await fetch(ASURL,{method:'POST',body:JSON.stringify({action:'bookAppointment',customerName:n,customerEmail:e,customerPhone:p,appointmentTime:sSlot,durationHours:durHrs,services:bS(),estimate:est,notes:(g('b-a').value+' '+g('b-no').value).trim()})});const data=await r.json();
   if(data.success){[1,2,3].forEach(i=>g('s'+i).style.display='none');g('suc').style.display='block';g('s-mg').textContent='Your appointment on '+new Date(sSlot).toLocaleString('en-US',{weekday:'long',month:'long',day:'numeric',hour:'numeric',minute:'2-digit'})+' is confirmed! Check '+e+' for your confirmation.'}else{showE('e3',data.error||'Booking failed. Please call (609) 215-4752.');btn.disabled=false;btn.innerHTML='🗓 Confirm Booking'}}catch{showE('e3','Network error. Please call (609) 215-4752.');btn.disabled=false;btn.innerHTML='🗓 Confirm Booking'}}
-function showE(id,msg){const el=g(id);if(el){el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',5000)}}
+function showE(id,msg){const e=document.getElementById(id);if(e){e.textContent=msg;e.style.display='block';setTimeout(()=>e.style.display='none',6000)}}
 </script>
 </body>
 </html>
