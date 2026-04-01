@@ -4,6 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tidal Wash | Professional Power Washing</title>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-ND6V7SVL');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '614831401421194');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=614831401421194&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta name="description" content="Professional power washing serving Dover, DE to Media, PA. Self-quote and book online. 20 years experience.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -226,6 +252,11 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
 <body>
 
 <div class="promo-bar">🌿 APRIL SPECIAL — $100 Off Gutter Cleaning with any Full House Wash!<span>Book in April to save</span></div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND6V7SVL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <nav>
   <a href="#" class="nav-logo">TIDAL<span>WASH</span></a>
   <ul class="nav-links">
@@ -801,6 +832,16 @@ function msrLineFt(pts){
 }
 </script>
 
+<!-- Phone click conversion tracking -->
+<script>
+document.querySelectorAll('a[href="tel:+16092154752"]').forEach(function(el){
+  el.addEventListener('click',function(){
+    if(typeof fbq==='function'){fbq('track','Contact',{content_name:'Phone Click'});}
+    if(typeof dataLayer!=='undefined'){dataLayer.push({event:'phone_click'});}
+  });
+});
+</script>
+
 <script data-cfasync="false">
 function toggleMenu(){const m=document.getElementById('mob-menu');m.classList.toggle('open')}
 document.querySelectorAll('#mob-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mob-menu').classList.remove('open')));
@@ -851,7 +892,9 @@ async function pDate(dt){if(busy)return;sDate=dt;sSlot=null;g('n1').disabled=tru
   if(data.success&&data.slots&&data.slots.length){data.slots.forEach(sl=>{const e=document.createElement('div');e.className='sl';e.textContent=new Date(sl).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});e.addEventListener('click',()=>{document.querySelectorAll('.sl').forEach(x=>x.classList.remove('sel'));e.classList.add('sel');sSlot=sl;g('n1').disabled=false});sg.appendChild(e)})}else se.style.display='block'}catch{sg.innerHTML='';showE('e1','Could not load times. Call (609) 215-4752.')}busy=false}
 async function subB(){const n=g('b-n').value.trim(),e=g('b-e').value.trim(),p=g('b-p').value.trim();if(!n||!e||!p){showE('e3','Please fill in name, phone, and email.');return}const btn=g('c-bt');btn.disabled=true;btn.innerHTML='<span class="sp"></span>Booking…';
   const rawHrs=est/200;const durHrs=Math.max(1,Math.ceil(rawHrs*2)/2);try{const r=await fetch(ASURL,{method:'POST',body:JSON.stringify({action:'bookAppointment',customerName:n,customerEmail:e,customerPhone:p,appointmentTime:sSlot,durationHours:durHrs,services:bS(),estimate:est,notes:(g('b-a').value+' '+g('b-no').value).trim()})});const data=await r.json();
-  if(data.success){[1,2,3].forEach(i=>g('s'+i).style.display='none');g('suc').style.display='block';g('s-mg').textContent='Your appointment on '+new Date(sSlot).toLocaleString('en-US',{weekday:'long',month:'long',day:'numeric',hour:'numeric',minute:'2-digit'})+' is confirmed! Check '+e+' for your confirmation.'}else{showE('e3',data.error||'Booking failed. Please call (609) 215-4752.');btn.disabled=false;btn.innerHTML='🗓 Confirm Booking'}}catch{showE('e3','Network error. Please call (609) 215-4752.');btn.disabled=false;btn.innerHTML='🗓 Confirm Booking'}}
+  if(data.success){[1,2,3].forEach(i=>g('s'+i).style.display='none');g('suc').style.display='block';g('s-mg').textContent='Your appointment on '+new Date(sSlot).toLocaleString('en-US',{weekday:'long',month:'long',day:'numeric',hour:'numeric',minute:'2-digit'})+' is confirmed! Check '+e+' for your confirmation.';
+    if(typeof fbq==='function'){fbq('track','Lead',{value:est,currency:'USD',content_name:'Booking Confirmed'});}
+    if(typeof dataLayer!=='undefined'){dataLayer.push({event:'booking_confirmed',value:est,currency:'USD'});}}else{showE('e3',data.error||'Booking failed. Please call (609) 215-4752.');btn.disabled=false;btn.innerHTML='🗓 Confirm Booking'}}catch{showE('e3','Network error. Please call (609) 215-4752.');btn.disabled=false;btn.innerHTML='🗓 Confirm Booking'}}
 function showE(id,msg){const e=document.getElementById(id);if(e){e.textContent=msg;e.style.display='block';setTimeout(()=>e.style.display='none',6000)}}
 </script>
 </body>
