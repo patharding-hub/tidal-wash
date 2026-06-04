@@ -850,6 +850,8 @@ const ASURL="https://script.google.com/macros/s/AKfycbwYwTUFOi_qrlb5ZxP4nPfdRR_b
 let PR={house:{vinyl:.079,brick:.099,dryvit:.119,cedar:.145},drv:{cement:.25,pavers:.35},deck:{composite:.45,wood:.55},roof:{shingle:.35,terracotta:.50,woodshake:.55},fence:{vinyl:1.25,wood:1.5,iron:2.0}};
 let AO={gutterPerLf:.55,furniturePerPiece:10,awningPerSqft:1.5};
 let MIN_CHARGE=150;
+let PROMO={enabled:false,discountType:'none',discountValue:0};
+let SIZE_DISCOUNTS=[];
 let svcs=new Set(),est=0,cY,cM,sDate=null,sSlot=null,busy=false;
 const g=id=>document.getElementById(id),fv=id=>parseFloat(g(id).value)||0,sv=id=>g(id)?g(id).value:'';
 function tS(b){const s=b.dataset.s,d=g('d-'+s);b.classList.toggle('on');d.classList.toggle('v');svcs.has(s)?svcs.delete(s):svcs.add(s);calc()}
@@ -865,7 +867,10 @@ function calc(){let t=0;
   if(gutOn)t+=gutAmt;
   if(g('a-fur').classList.contains('on'))t+=fv('fu-p')*AO.furniturePerPiece;
   if(g('a-awn').classList.contains('on'))t+=fv('aw-sf')*AO.awningPerSqft;
-  const hasAddon=gutOn||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on');const hasAny=svcs.size>0||hasAddon;t=Math.max(t,hasAny?MIN_CHARGE:0);est=Math.round(t);
+  const hasAddon=gutOn||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on');const hasAny=svcs.size>0||hasAddon;
+  if(hasAny&&SIZE_DISCOUNTS.length){const totalSqft=(svcs.has('house')?fv('h-sf'):0)+(svcs.has('drv')?fv('v-sf'):0)+(svcs.has('deck')?fv('k-sf'):0)+(svcs.has('roof')?fv('r-sf'):0)+(svcs.has('fence')?fv('f-lf'):0);const bracket=SIZE_DISCOUNTS.find(function(b){return totalSqft>=b.minSqft&&totalSqft<=b.maxSqft;});if(bracket&&bracket.discountPct>0)t=t*(1-bracket.discountPct/100);}
+  if(hasAny&&PROMO.enabled&&PROMO.discountType!=='none'&&t>0){if(PROMO.discountType==='fixed')t=Math.max(0,t-PROMO.discountValue);else if(PROMO.discountType==='percent')t=t*(1-PROMO.discountValue/100);}
+  t=Math.max(t,hasAny?MIN_CHARGE:0);est=Math.round(t);
   g('tw-pr').textContent='$'+est.toLocaleString();g('tw-bb').disabled=est===0||!hasAny}
 function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();const isMin=est===MIN_CHARGE&&(svcs.size>0||g('a-gut').classList.contains('on')||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on'));
   if(svcs.has('house')){const p=fv('h-sf')*(parseFloat(sv('h-st'))||1.2)*(PR.house[sv('h-si')]||.12);if(p>0)l.push('House Washing — '+fmt(p));}
@@ -876,6 +881,7 @@ function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();const i
   if(g('a-gut').classList.contains('on')){const gutP=fv('g-lf')*AO.gutterPerLf;if(gutP>0)l.push('Gutter Cleaning — '+fmt(gutP));}
   if(g('a-fur').classList.contains('on')){const p=fv('fu-p')*AO.furniturePerPiece;if(p>0)l.push('Outdoor Furniture — '+fmt(p));}
   if(g('a-awn').classList.contains('on')){const p=fv('aw-sf')*AO.awningPerSqft;if(p>0)l.push('Awning Cleaning — '+fmt(p));}
+  if(PROMO.enabled&&PROMO.discountType!=='none'&&PROMO.discountValue>0){const sub=l.length?'Promo discount — -'+(PROMO.discountType==='fixed'?'$'+PROMO.discountValue:PROMO.discountValue+'%'):'';if(sub)l.push(sub);}
   if(isMin) l.push('— $150 minimum charge applies —');
   return l.join('\n')}
 function openM(){g('mo').classList.add('open');document.body.style.overflow='hidden';g('m-sv').textContent=bS();g('m-tot').textContent='$'+est.toLocaleString()+' estimated';const n=new Date();cY=n.getFullYear();cM=n.getMonth();rCal();gSt(1)}
@@ -915,7 +921,11 @@ async function fetchPricing(){
       if(p.addOns.awningCleaning)AO.awningPerSqft=p.addOns.awningCleaning.ratePerSqft||1.5;
     }
     if(p.minimumCharge)MIN_CHARGE=p.minimumCharge;
+    if(p.sizeDiscounts)SIZE_DISCOUNTS=p.sizeDiscounts;
     const promo=p.promo||{};
+    PROMO.enabled=promo.enabled||false;
+    PROMO.discountType=promo.discountType||'none';
+    PROMO.discountValue=promo.discountValue||0;
     const bar=g('site-promo-bar');if(bar){bar.style.display=promo.enabled?'block':'none';bar.textContent=promo.text||'';}
     const box=g('est-promo');if(box){box.style.display=promo.enabled?'block':'none';box.textContent=promo.text||'';}
     const gutLbl=g('gut-rate-lbl');if(gutLbl)gutLbl.textContent='$'+AO.gutterPerLf.toFixed(2)+'/linear ft';
