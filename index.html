@@ -536,7 +536,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script data-cfasync="false">
 const MAPS_KEY='AIzaSyANGrxiO-W-QVd3AooAza7qx_x_YcHRMeM';
-let msrMap=null,msrCanvas=null,msrCtx=null,msrMarker=null;
+let msrMap=null,msrCanvas=null,msrCtx=null,msrMarkerLatLng=null;
 let msrTargetId=null,msrMode=null,msrResult=0;
 let msrMapsLoaded=false,msrMapsLoading=false;
 let msrPoints=[],msrSegments=[],msrDrawing=true,msrCurrentMode='draw';
@@ -617,9 +617,10 @@ function msrSearch(){
       msrMap.setZoom(20);
       msrMap.setMapTypeId('satellite');
       document.getElementById('msr-map-msg').style.display='none';
+      msrMarkerLatLng=loc;
       msrClear();
       msrSetMode('draw');
-      msrMarker=new google.maps.Marker({position:loc,map:msrMap,title:addr,animation:google.maps.Animation.DROP});
+      msrRedraw();
     } else {
       alert('Address not found. Try: 123 Main St, Wilmington, DE');
     }
@@ -751,6 +752,14 @@ function msrRedraw(){
     msrCtx.strokeStyle='#fff';msrCtx.lineWidth=2;msrCtx.stroke();
     if(snap){msrCtx.beginPath();msrCtx.arc(f.x,f.y,16,0,Math.PI*2);msrCtx.strokeStyle='rgba(34,197,94,0.5)';msrCtx.lineWidth=2.5;msrCtx.stroke();}
   }
+  if(msrMarkerLatLng&&msrMap.getBounds()){
+    const p=msrLatLngToCanvas(msrMarkerLatLng.lat(),msrMarkerLatLng.lng());
+    const px=p.x,py=p.y;
+    msrCtx.beginPath();msrCtx.ellipse(px+1,py+1,6,3,0,0,Math.PI*2);msrCtx.fillStyle='rgba(0,0,0,0.25)';msrCtx.fill();
+    msrCtx.beginPath();msrCtx.moveTo(px-7,py-10);msrCtx.lineTo(px,py);msrCtx.lineTo(px+7,py-10);msrCtx.fillStyle='#e74c3c';msrCtx.fill();
+    msrCtx.beginPath();msrCtx.arc(px,py-20,11,0,Math.PI*2);msrCtx.fillStyle='#e74c3c';msrCtx.fill();msrCtx.strokeStyle='#fff';msrCtx.lineWidth=2.5;msrCtx.stroke();
+    msrCtx.beginPath();msrCtx.arc(px,py-20,4,0,Math.PI*2);msrCtx.fillStyle='#fff';msrCtx.fill();
+  }
 }
 
 function msrFinish(){
@@ -800,7 +809,7 @@ function msrAddSegment(){
 
 function msrClear(){
   msrPoints=[];msrSegments=[];msrDrawing=true;msrMousePos=null;msrResult=0;
-  if(msrMarker){msrMarker.setMap(null);msrMarker=null;}
+  msrMarkerLatLng=null;
   if(msrCtx) msrCtx.clearRect(0,0,msrCanvas.width,msrCanvas.height);
   document.getElementById('msr-val').textContent='--';
   document.getElementById('msr-sub2').textContent=msrMode==='linear ft'?'Click points along the fence line':'Click each corner of the area';
