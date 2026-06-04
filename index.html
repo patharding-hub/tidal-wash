@@ -251,7 +251,7 @@ footer p{color:rgba(255,255,255,.3);font-size:.8rem}
 </head>
 <body>
 
-<div class="promo-bar">🌿 APRIL SPECIAL — $100 Off Gutter Cleaning with any Full House Wash!<span>Book in April to save</span></div>
+<div class="promo-bar" id="site-promo-bar" style="display:none"></div>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND6V7SVL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -397,6 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="est-wrap">
     <div id="tw">
       <div class="th"><h2>💧 Power Washing Estimator</h2><p>Select services for an instant price</p></div>
+      <div id="est-promo" style="display:none;background:linear-gradient(90deg,#e65c00,#f9a825);color:#fff;padding:12px 16px;border-radius:8px;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;text-align:center;letter-spacing:.5px"></div>
       <div style="margin:0 0 18px;border-radius:12px;overflow:hidden;position:relative;padding-bottom:56.25%;height:0"><iframe src="https://www.youtube.com/embed/9Lv3V89vWE0" title="Estimator Tutorial" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px"></iframe></div>
       <div class="ts"><div class="tst">Select Services</div>
         <div class="sg">
@@ -413,7 +414,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="ts"><div class="tst">Add-On Services</div>
-        <div class="ao" id="a-gut" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Gutter Cleaning</strong><div style="font-size:.76rem;color:#777">$0.55/linear ft</div><div id="promo-applied" class="promo-discount" style="display:none">🎉 $100 April Booking Promo Applied!</div></div></div>
+        <div class="ao" id="a-gut" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Gutter Cleaning</strong><div style="font-size:.76rem;color:#777" id="gut-rate-lbl">$0.55/linear ft</div></div></div>
         <div class="ai" id="a-gut-i"><label>Linear Feet</label><input type="number" id="g-lf" min="0" placeholder="150" oninput="calc()" style="max-width:170px"><button class="msr-btn" onclick="openMsr('g-lf','linear ft','Gutter Line')">&#128208; Measure</button></div>
         <div class="ao" id="a-fur" onclick="tA(this)"><div class="ab">✓</div><div><strong style="font-size:.86rem">Outdoor Furniture</strong><div style="font-size:.76rem;color:#777">$10/piece</div></div></div>
         <div class="ai" id="a-fur-i"><label>Pieces</label><input type="number" id="fu-p" min="0" placeholder="4" oninput="calc()" style="max-width:170px"></div>
@@ -864,10 +865,6 @@ function calc(){let t=0;
   if(gutOn)t+=gutAmt;
   if(g('a-fur').classList.contains('on'))t+=fv('fu-p')*AO.furniturePerPiece;
   if(g('a-awn').classList.contains('on'))t+=fv('aw-sf')*AO.awningPerSqft;
-  const isApril=sDate?sDate.getMonth()===3:new Date().getMonth()===3;
-  const aprilPromo=isApril&&gutOn&&svcs.has('house');
-  if(aprilPromo)t=Math.max(0,t-Math.min(100,gutAmt));
-  const promoEl=g('promo-applied');if(promoEl)promoEl.style.display=aprilPromo?'block':'none';
   const hasAddon=gutOn||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on');const hasAny=svcs.size>0||hasAddon;t=Math.max(t,hasAny?MIN_CHARGE:0);est=Math.round(t);
   g('tw-pr').textContent='$'+est.toLocaleString();g('tw-bb').disabled=est===0||!hasAny}
 function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();const isMin=est===MIN_CHARGE&&(svcs.size>0||g('a-gut').classList.contains('on')||g('a-fur').classList.contains('on')||g('a-awn').classList.contains('on'));
@@ -876,7 +873,7 @@ function bS(){const l=[];const fmt=v=>'$'+Math.round(v).toLocaleString();const i
   if(svcs.has('deck')){const p=fv('k-sf')*(PR.deck[sv('k-ty')]||.45);if(p>0)l.push('Deck/Patio — '+fmt(p));}
   if(svcs.has('roof')){const p=fv('r-sf')*(parseFloat(sv('r-pi'))||1.2)*(parseFloat(sv('r-st'))||1.0)*(PR.roof[sv('r-ty')]||.35);if(p>0)l.push('Roof Washing — '+fmt(p));}
   if(svcs.has('fence')){const p=fv('f-lf')*(PR.fence[sv('f-ma')]||1.25)*(parseInt(sv('f-si'))||1);if(p>0)l.push('Fencing — '+fmt(p));}
-  if(g('a-gut').classList.contains('on')){const gutP=fv('g-lf')*AO.gutterPerLf;const isAprilPromo=(sDate?sDate.getMonth()===3:new Date().getMonth()===3)&&svcs.has('house');const gutDisc=isAprilPromo?Math.min(100,gutP):0;const gutFinal=Math.max(0,gutP-gutDisc);if(gutP>0)l.push('Gutter Cleaning — '+(gutDisc>0?fmt(gutFinal)+' (was '+fmt(gutP)+', $'+Math.round(gutDisc)+' April promo!)':fmt(gutFinal)));}
+  if(g('a-gut').classList.contains('on')){const gutP=fv('g-lf')*AO.gutterPerLf;if(gutP>0)l.push('Gutter Cleaning — '+fmt(gutP));}
   if(g('a-fur').classList.contains('on')){const p=fv('fu-p')*AO.furniturePerPiece;if(p>0)l.push('Outdoor Furniture — '+fmt(p));}
   if(g('a-awn').classList.contains('on')){const p=fv('aw-sf')*AO.awningPerSqft;if(p>0)l.push('Awning Cleaning — '+fmt(p));}
   if(isMin) l.push('— $150 minimum charge applies —');
@@ -918,6 +915,10 @@ async function fetchPricing(){
       if(p.addOns.awningCleaning)AO.awningPerSqft=p.addOns.awningCleaning.ratePerSqft||1.5;
     }
     if(p.minimumCharge)MIN_CHARGE=p.minimumCharge;
+    const promo=p.promo||{};
+    const bar=g('site-promo-bar');if(bar){bar.style.display=promo.enabled?'block':'none';bar.textContent=promo.text||'';}
+    const box=g('est-promo');if(box){box.style.display=promo.enabled?'block':'none';box.textContent=promo.text||'';}
+    const gutLbl=g('gut-rate-lbl');if(gutLbl)gutLbl.textContent='$'+AO.gutterPerLf.toFixed(2)+'/linear ft';
     calc();
   }catch(e){}
 }
