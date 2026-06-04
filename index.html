@@ -617,10 +617,9 @@ function msrSearch(){
       msrMap.setZoom(20);
       msrMap.setMapTypeId('satellite');
       document.getElementById('msr-map-msg').style.display='none';
-      if(msrMarker)msrMarker.setMap(null);
-      msrMarker=new google.maps.Marker({position:loc,map:msrMap,title:addr,animation:google.maps.Animation.DROP});
       msrClear();
       msrSetMode('draw');
+      msrMarker=new google.maps.Marker({position:loc,map:msrMap,title:addr,animation:google.maps.Animation.DROP});
     } else {
       alert('Address not found. Try: 123 Main St, Wilmington, DE');
     }
